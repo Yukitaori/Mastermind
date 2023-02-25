@@ -1,0 +1,61 @@
+body {
+    background-color: white;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+.gameScreen {
+    margin: 50px;
+}
+
+.newGame {
+    display: block;
+    margin: auto;
+    box-shadow: 1px 1px 1px black;
+}
+
+.submitButton {
+    display: block;
+    margin: auto;
+    box-shadow: 1px 1px 1px black;
+}
+
+.guessingLine {
+    display: flex;
+    align-content: space-between;
+    margin-top: 20px;
+    background-color: grey;
+    border: 3px black solid;
+}
+
+.guessingButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: grey;
+    margin: auto;
+    border: 3px black solid;
+}
+
+.hintSquare {
+    background-color: grey;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60px;
+    height: 60px;
+    /*border: 3px black solid;*/
+}
+
+.hintButton {
+    background-color: grey;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border-radius: 100%;
+}
+
+
