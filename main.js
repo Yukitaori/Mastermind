@@ -1,9 +1,12 @@
 let newGameButton = document.querySelector(".newGame");
 newGameButton.addEventListener("click", launchNewGame);
 
+let infoButton = document.querySelector(".info");
+infoButton.addEventListener("click", information);
+
 let gameScreen = document.querySelector(".gameScreen");
 
-let colors = ["yellow", "blue", "red", "green", "white", "black"];
+const colors = ["yellow", "blue", "red", "green", "white", "black"];
 let combinationToGuess = [null, null, null, null];
 let userCombination = [null, null, null, null];
 
@@ -13,12 +16,30 @@ let pegHole;
 let placedGuess = false;
 let simpleGuess = false;
 
+let infoPanelCreated = false;
+
+function information() {
+  let informationPanel;
+  if (infoPanelCreated === false) {
+    informationPanel = document.createElement('div');
+    infoPanelCreated = true;
+    informationPanel.setAttribute('class', 'infoPanel');
+    gameScreen.appendChild(informationPanel);
+    informationPanel.textContent = 'Test';
+    let firstLine = document.getElementById('line1');
+    gameScreen.insertBefore(informationPanel, firstLine);
+  } else if (infoPanelCreated === true) {
+    infoPanelCreated = false;
+    gameScreen.removeChild(gameScreen.firstChild);
+  }
+}
 
 //this function reboots the game screen, and gives a new random combination to guess.
 function launchNewGame() {
   while (gameScreen.firstChild) {
     gameScreen.removeChild(gameScreen.firstChild);
-   }
+  }
+  infoPanelCreated = false;
   turnNumber = 0;
   combinationToGuess = [];
   random4Combination();
@@ -74,6 +95,7 @@ function createGuessingLine() {
     let guessingButtonToDeactivate;
     for (let k = 1; k <= 4; k++) {
       guessingButtonToDeactivate = document.getElementById(turnNumber + 'guessingButton' + k);
+      // !!!!! Revoir cette boucle : seul le dernier guessingButton est impacté par le removeEventListener.
       guessingButtonToDeactivate.removeEventListener('click', changeColor);
       console.log(guessingButtonToDeactivate);
     }
@@ -101,10 +123,10 @@ function createGuessingLine() {
     }
   }
 
-  
+
   // This function creates a new square in which hints will be given after the users's guess.
-  function createHintSquare () {
-    let  newHintSquare = document.createElement('div');
+  function createHintSquare() {
+    let newHintSquare = document.createElement('div');
     newHintSquare.setAttribute('class', 'hintSquare');
     newHintSquare.setAttribute('id', turnNumber + 'hintSquare')
     newLine.appendChild(newHintSquare);
@@ -120,7 +142,8 @@ function createGuessingLine() {
 
 
 // This function, used in the function checkGuess() gives a color to a random hintButton of the hintSquare.
-function randomPegPlacing () {
+// !!!!!!!!     Revoir la fonction car selon la position du guess, il peut être priks en compte deux fois dans le peg placing.
+function randomPegPlacing() {
   console.log('placement du pion');
   let pegHoleName = turnNumber + 'hintButton' + random(1, 4);
   pegHole = document.getElementById(pegHoleName);
@@ -152,13 +175,13 @@ function checkGuess() {
           simpleGuess === false;
         }
 
-       placedGuess = true;
+        placedGuess = true;
         score++;
-        console.log (combinationToGuess[l] + ' ' + l + ' / ' + userCombination[k] + ' ' + k + ' placed');
+        console.log(combinationToGuess[l] + ' ' + l + ' / ' + userCombination[k] + ' ' + k + ' placed');
         userCombination[l] = 'else';
       } else if (combinationToGuess[l] === userCombination[k] && k !== l && simpleGuess === false) {
         simpleGuess = true;
-        console.log (combinationToGuess[l] + ' ' + l + ' / ' + userCombination[k] + ' ' + k + ' simple');
+        console.log(combinationToGuess[l] + ' ' + l + ' / ' + userCombination[k] + ' ' + k + ' simple');
       }
     }
     randomPegPlacing();
@@ -177,8 +200,8 @@ function checkGuess() {
         confirm('Vous avez perdu.');
         launchNewGame();
       } else {
-       createGuessingLine();
-    }
+        createGuessingLine();
+      }
     }
   }
   scoreCheck();

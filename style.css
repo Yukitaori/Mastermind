@@ -1,34 +1,54 @@
 body {
-    background-color: white;
+    background-color: black;
 }
 
 h1 {
-    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 75px;
+    color: white;
     text-align: center;
+    border: 10px white double;
+    width: 500px;
+    margin: auto;
 }
 
 .gameScreen {
     margin: 50px;
 }
 
+.buttons {
+    margin: 50px auto auto auto;
+    width: 500px;
+    display: flex;
+    align-content: space-between;
+}
+
 .newGame {
-    display: block;
     margin: auto;
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 3px 3px grey;
+    width: 80px;
+}
+
+.info {
+    margin: auto;
+    box-shadow: 3px 3px grey;
+    width: 80px;
 }
 
 .submitButton {
-    display: block;
+    width: 80px;
     margin: auto;
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 1px 1px 1px grey;
 }
 
 .guessingLine {
+    margin: auto;
+    margin-top: 20px;
+    background-color: black;
+    border: 3px white solid;
+    width: 500px;
     display: flex;
     align-content: space-between;
-    margin-top: 20px;
-    background-color: grey;
-    border: 3px black solid;
 }
 
 .guessingButton {
@@ -37,17 +57,17 @@ h1 {
     border-radius: 100%;
     background-color: grey;
     margin: auto;
-    border: 3px black solid;
+    border: 3px white solid;
 }
 
 .hintSquare {
-    background-color: grey;
+    background-color: black;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 60px;
     height: 60px;
-    /*border: 3px black solid;*/
+    border-left: 3px white solid;
 }
 
 .hintButton {
@@ -56,6 +76,13 @@ h1 {
     height: 20px;
     margin: 5px;
     border-radius: 100%;
+    border: 3px white solid;
 }
 
-
+.infoPanel {
+    margin: auto;
+    width: 500px;
+    background-color: grey;
+    color: black;
+    border: 3px white solid;
+}
