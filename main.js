@@ -95,9 +95,7 @@ function createGuessingLine() {
     let guessingButtonToDeactivate;
     for (let k = 1; k <= 4; k++) {
       guessingButtonToDeactivate = document.getElementById(turnNumber + 'guessingButton' + k);
-      // !!!!! Revoir cette boucle : seul le dernier guessingButton est impacté par le removeEventListener.
-      guessingButtonToDeactivate.removeEventListener('click', changeColor);
-      console.log(guessingButtonToDeactivate);
+      guessingButtonToDeactivate.setAttribute('class', 'guessingButton');
     }
     submitButton.textContent = 'Tour ' + (Number(turnNumber)) + ' terminé !';
     checkGuess();
@@ -105,7 +103,7 @@ function createGuessingLine() {
 
   for (let i = 1; i <= 4; i++) {
     let newGuessingButton = document.createElement('div');
-    newGuessingButton.setAttribute('class', 'guessingButton');
+    newGuessingButton.setAttribute('class', 'guessingButton active');
     newGuessingButton.setAttribute('id', turnNumber + 'guessingButton' + i);
     newLine.appendChild(newGuessingButton);
     newGuessingButton.addEventListener('click', changeColor);
@@ -117,9 +115,11 @@ function createGuessingLine() {
       if (j === colors.length) {
         j = 0;
       }
-      guessedColor = colors[j];
-      newGuessingButton.style.backgroundColor = guessedColor;
-      userCombination[i - 1] = guessedColor;
+      if (newGuessingButton.getAttribute('class') === 'guessingButton active') {
+        guessedColor = colors[j];
+        newGuessingButton.style.backgroundColor = guessedColor;
+        userCombination[i - 1] = guessedColor;
+      }
     }
   }
 
@@ -142,7 +142,7 @@ function createGuessingLine() {
 
 
 // This function, used in the function checkGuess() gives a color to a random hintButton of the hintSquare.
-// !!!!!!!!     Revoir la fonction car selon la position du guess, il peut être priks en compte deux fois dans le peg placing.
+// !!!!!!!!     Revoir la fonction car selon la position du guess, il peut être pris en compte deux fois dans le peg placing.
 function randomPegPlacing() {
   console.log('placement du pion');
   let pegHoleName = turnNumber + 'hintButton' + random(1, 4);
