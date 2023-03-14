@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: black;
 }
@@ -12,8 +18,12 @@ h1 {
     margin: auto;
 }
 
+h2 {
+    text-align: center;
+}
+
 .gameScreen {
-    margin: 50px;
+    padding: 20px 0px;
 }
 
 .buttons {
@@ -43,7 +53,6 @@ h1 {
 
 .guessingLine {
     margin: auto;
-    margin-top: 20px;
     background-color: black;
     border: 3px white solid;
     width: 500px;
@@ -62,9 +71,12 @@ h1 {
 
 .hintSquare {
     background-color: black;
-    display: flex;
+    /*display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     width: 60px;
     height: 60px;
     border-left: 3px white solid;
@@ -79,8 +91,9 @@ h1 {
     border: 3px white solid;
 }
 
-.infoPanel {
-    margin: auto;
+#rules {
+    padding: 10px;
+    margin: 10px auto 0px auto;
     width: 500px;
     background-color: grey;
     color: black;
