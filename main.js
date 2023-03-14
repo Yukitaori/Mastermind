@@ -123,7 +123,7 @@ function createGuessingLine() {
     newHintSquare.setAttribute('id', turnNumber + 'hintSquare')
     newLine.appendChild(newHintSquare);
     for (let i = 1; i <= 4; i++) {
-      let newHintButton = document.createElement('button');
+      let newHintButton = document.createElement('div');
       newHintButton.setAttribute('class', 'hintButton');
       newHintButton.setAttribute('id', turnNumber + 'hintButton' + i);
       newHintSquare.appendChild(newHintButton);
