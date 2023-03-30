@@ -3,36 +3,28 @@ newGameButton.addEventListener("click", launchNewGame);
 
 let infoButton = document.querySelector(".info");
 infoButton.addEventListener("click", information);
+let informationPanel = document.getElementById('rules');
+informationPanel.style.display = "none";
 
 let gameScreen = document.querySelector(".gameScreen");
 
 const colors = ["yellow", "blue", "red", "green", "white", "black"];
 let combinationToGuess = [null, null, null, null];
 let userCombination = [null, null, null, null];
-
 let turnNumber;
-
 let pegHole;
 let placedGuess = false;
 let simpleGuess = false;
 
-let infoPanelCreated = false;
 
 function information() {
-  let informationPanel;
-  if (infoPanelCreated === false) {
-    informationPanel = document.createElement('div');
-    infoPanelCreated = true;
-    informationPanel.setAttribute('class', 'infoPanel');
-    gameScreen.appendChild(informationPanel);
-    informationPanel.textContent = 'Test';
-    let firstLine = document.getElementById('line1');
-    gameScreen.insertBefore(informationPanel, firstLine);
-  } else if (infoPanelCreated === true) {
-    infoPanelCreated = false;
-    gameScreen.removeChild(gameScreen.firstChild);
+  if (informationPanel.style.display === "none") {
+    informationPanel.style.display = "block";
+  } else {
+    informationPanel.style.display = "none";
   }
 }
+
 
 //this function reboots the game screen, and gives a new random combination to guess.
 function launchNewGame() {
@@ -131,7 +123,7 @@ function createGuessingLine() {
     newHintSquare.setAttribute('id', turnNumber + 'hintSquare')
     newLine.appendChild(newHintSquare);
     for (let i = 1; i <= 4; i++) {
-      let newHintButton = document.createElement('button');
+      let newHintButton = document.createElement('div');
       newHintButton.setAttribute('class', 'hintButton');
       newHintButton.setAttribute('id', turnNumber + 'hintButton' + i);
       newHintSquare.appendChild(newHintButton);
