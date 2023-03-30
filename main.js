@@ -82,15 +82,20 @@ function createGuessingLine() {
   newLine.appendChild(submitButton);
   submitButton.addEventListener('click', submitGuess);
   function submitGuess() {
-    console.log('Désactivation + nouveau texte sur bouton submit');
-    submitButton.removeEventListener('click', submitGuess);
-    let guessingButtonToDeactivate;
-    for (let k = 1; k <= 4; k++) {
-      guessingButtonToDeactivate = document.getElementById(turnNumber + 'guessingButton' + k);
-      guessingButtonToDeactivate.setAttribute('class', 'guessingButton');
+    if (userCombination.length !== combinationToGuess.length) {
+      confirm('Vous devez entrer une combinaison de ' + combinationToGuess.length + ' pions.');
+
+    } else {
+      console.log('Désactivation + nouveau texte sur bouton submit');
+      submitButton.removeEventListener('click', submitGuess);
+      let guessingButtonToDeactivate;
+      for (let k = 1; k <= 4; k++) {
+        guessingButtonToDeactivate = document.getElementById(turnNumber + 'guessingButton' + k);
+        guessingButtonToDeactivate.setAttribute('class', 'guessingButton');
+      }
+      submitButton.textContent = 'Tour ' + (Number(turnNumber)) + ' terminé !';
+      checkGuess();
     }
-    submitButton.textContent = 'Tour ' + (Number(turnNumber)) + ' terminé !';
-    checkGuess();
   }
 
   for (let i = 1; i <= 4; i++) {
