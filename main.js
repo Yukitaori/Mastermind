@@ -142,16 +142,28 @@ function createGuessingLine() {
 // !!!!!!!!     Revoir la fonction car selon la position du guess, il peut être pris en compte deux fois dans le peg placing.
 function randomPegPlacing() {
   console.log('placement du pion');
+  function selectPegHole() {
+    pegHoleName = turnNumber + 'hintButton' + random(1, 4);
+    pegHole = document.getElementById(pegHoleName);
+  }
+
   let pegHoleName = turnNumber + 'hintButton' + random(1, 4);
   pegHole = document.getElementById(pegHoleName);
-  if (pegHole.style.backgroundColor !== 'red' && pegHole.style.backgroundColor !== 'white') {
-    if (placedGuess === true) {
-      pegHole.style.backgroundColor = 'red';
-    } else if (simpleGuess === true) {
-      pegHole.style.backgroundColor = 'white';
-    }
-  } else {
-    randomPegPlacing();
+  do { selectPegHole() } while (pegHole.classList.contains("colored") === true);
+  console.log(pegHoleName);
+
+  // if (pegHole.style.backgroundColor !== 'red' && pegHole.style.backgroundColor !== 'white') {
+
+  if (placedGuess === true) {
+    pegHole.style.backgroundColor = 'red';
+    placedGuess = false;
+    pegHole.classList.add("colored");
+    console.log('Placé !')
+  } else if (simpleGuess === true) {
+    pegHole.style.backgroundColor = 'white';
+    simpleGuess = false;
+    pegHole.classList.add("colored");
+    console.log('Pas placé !')
   }
 }
 
@@ -162,27 +174,45 @@ function checkGuess() {
   console.log(combinationToGuess);
   console.log(userCombination);
   let score = 0;
-  for (let l = 0; l < 4; l++) {
-    placedGuess = false;
-    simpleGuess = false;
-    for (let k = 0; k < 4; k++) {
-
-      if (combinationToGuess[l] === userCombination[k] && k === l) {
-        if (simpleGuess === true) {
-          simpleGuess === false;
-        }
-
+  let cloneCombinationToGuess = combinationToGuess.slice();
+  for (let k = 0; k < userCombination.length; k++) {
+    for (let l = 0; l < combinationToGuess.length; l++) {
+      simpleGuess = false;
+      placedGuess = false;
+      if (combinationToGuess[l] === userCombination[k] && k === l && cloneCombinationToGuess[l] !== "else") {
         placedGuess = true;
         score++;
         console.log(combinationToGuess[l] + ' ' + l + ' / ' + userCombination[k] + ' ' + k + ' placed');
-        userCombination[l] = 'else';
-      } else if (combinationToGuess[l] === userCombination[k] && k !== l && simpleGuess === false) {
-        simpleGuess = true;
-        console.log(combinationToGuess[l] + ' ' + l + ' / ' + userCombination[k] + ' ' + k + ' simple');
+        userCombination[k] = 'else';
+        cloneCombinationToGuess[l] = "else";
+      }
+
+      if (placedGuess === true) {
+        randomPegPlacing();
       }
     }
-    randomPegPlacing();
   }
+
+  // let filteredUserCombination = userCombination.filter(element => element !== "else");
+  // console.log("filter " + filteredUserCombination)
+
+  for (let k = 0; k < userCombination.length; k++) {
+    for (let l = 0; l < combinationToGuess.length; l++) {
+      simpleGuess = false;
+      placedGuess = false;
+      if (combinationToGuess[l] === userCombination[k] && cloneCombinationToGuess[l] !== "else") {
+        simpleGuess = true;
+        console.log(combinationToGuess[l] + ' ' + l + ' / ' + userCombination[l] + ' ' + l + ' simple');
+        cloneCombinationToGuess[l] = "else"
+      }
+
+      if (simpleGuess === true) {
+        randomPegPlacing();
+      }
+    }
+  }
+
+
 
 
   // This function checks the conditions for the end of the game and creates a new guessing line if necessary.
