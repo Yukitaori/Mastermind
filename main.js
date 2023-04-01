@@ -72,15 +72,15 @@ function createGuessingLine() {
   let submitButton = document.createElement("button");
   submitButton.setAttribute("class", "submitButton");
   submitButton.setAttribute("id", "submitButton" + turnNumber);
-  submitButton.textContent = "Soumettre";
+  submitButton.textContent = "OK";
   newLine.appendChild(submitButton);
   submitButton.addEventListener("click", submitGuess);
   function submitGuess() {
     if (userCombination.length !== combinationToGuess.length) {
       confirm(
-        "Vous devez entrer une combinaison de " +
+        "You must enter a combination of " +
           combinationToGuess.length +
-          " pions."
+          " pegs."
       );
     } else {
       console.log("Désactivation + nouveau texte sur bouton submit");
@@ -237,11 +237,11 @@ function checkGuess() {
   function scoreCheck() {
     console.log("Check");
     if (score === 4) {
-      confirm("Vous avez gagné !!!");
+      confirm("You win!!!");
       launchNewGame();
     } else {
       if (turnNumber === 10) {
-        confirm("Vous avez perdu.");
+        confirm("You lose.");
         launchNewGame();
       } else {
         createGuessingLine();
