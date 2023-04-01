@@ -1,137 +1,136 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    --main-color: #AE2012;
-    --secondary-color: #E9D8A6;
-    --third-color: #005F73;
-    --fourth-color: #EE9B00;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  --main-color: #ae2012;
+  --secondary-color: #e9d8a6;
+  --third-color: #005f73;
+  --fourth-color: #ee9b00;
 }
 
 :root {
-    min-width: 600px;
+  min-width: 600px;
 }
-
 
 /*/////////// header ///////////*/
 
 header {
-    background-color: var(--main-color);
-    border-bottom: 5px var(--fourth-color) solid;
-    border-left: 5px var(--fourth-color) solid;
-    border-right: 5px var(--fourth-color) solid;
-    width: 600px;
-    margin: 0px auto;
-    border-radius: 0 0 10px 10px;
+  background-color: var(--main-color);
+  border-bottom: 5px var(--fourth-color) solid;
+  border-left: 5px var(--fourth-color) solid;
+  border-right: 5px var(--fourth-color) solid;
+  width: 600px;
+  margin: 0px auto;
+  border-radius: 0 0 10px 10px;
 }
 
 h1 {
-    font-size: 75px;
-    color: var(--secondary-color);
-    text-align: center;
-    width: 500px;
-    margin: auto;
+  font-size: 75px;
+  color: var(--secondary-color);
+  text-align: center;
+  width: 500px;
+  margin: auto;
 }
 
 /*/////////// body ///////////*/
 
 body {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 button {
-    border-color: var(--third-color);
-    border-radius: 5px;
-    transition: color 0.1s;
-    background-color: var(--main-color);
-    margin: auto;
-    box-shadow: 3px 3px var(--third-color);
-    width: 6em;
-    color: var(--secondary-color);
+  border-color: var(--third-color);
+  border-radius: 5px;
+  transition: color 0.1s;
+  background-color: var(--main-color);
+  margin: auto;
+  box-shadow: 3px 3px var(--third-color);
+  width: 6em;
+  color: var(--secondary-color);
 }
 
 button:hover {
-    color: var(--third-color)
+  color: var(--third-color);
 }
 
 .buttons {
-    margin: 3em auto auto auto;
-    width: 500px;
-    display: flex;
-    align-content: space-between;
+  margin: 3em auto auto auto;
+  width: 500px;
+  display: flex;
+  align-content: space-between;
 }
 
 h2 {
-    text-align: center;
+  text-align: center;
 }
 
 #rules {
-    padding: 10px;
-    margin: 10px auto 0px auto;
-    width: 500px;
-    background-color: var(--third-color);
-    color: var(--fourth-color);
-    border-radius: 10px;
-    border: 3px var(--main-color) solid;
+  padding: 10px;
+  margin: 10px auto 0px auto;
+  width: 500px;
+  background-color: var(--third-color);
+  color: var(--fourth-color);
+  border-radius: 10px;
+  border: 3px var(--main-color) solid;
 }
 
 /*/////////// game screen ///////////*/
 
 .gameScreen {
-    border-radius: 10px;
-    border: 5px var(--main-color) solid;
-    margin: 2em auto;
-    background-color: var(--third-color);
-    padding: 20px 0px;
-    width: 600px;
+  border-radius: 10px;
+  border: 5px var(--main-color) solid;
+  margin: 2em auto;
+  background-color: var(--third-color);
+  padding: 20px 0px;
+  width: 600px;
 }
 
 .guessingLine {
-    margin: 1em auto;
-    background-color: var(--main-color);
-    border-radius: 10px;
-    border: 3px var(--secondary-color) solid;
-    width: 500px;
-    display: flex;
-    align-content: space-between;
+  margin: 1em auto;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  border: 3px var(--secondary-color) solid;
+  width: 500px;
+  display: flex;
+  align-content: space-between;
 }
 
 .guessingButton {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    background-color: var(--secondary-color);
-    margin: auto;
-    border: 3px var(--third-color) solid;
-    box-shadow: 3px 3px var(--third-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: var(--secondary-color);
+  margin: auto;
+  border: 3px var(--third-color) solid;
+  box-shadow: 3px 3px var(--third-color);
 }
 
 .guessingButton:hover {
-    transition: opacity 0.3s;
-    opacity: 0.7;
+  transition: opacity 0.3s;
+  opacity: 0.7;
 }
 
 .hintSquare {
-    background-color: var(--main-color);
-    /*display: flex;
+  background-color: var(--main-color);
+  /*display: flex;
     flex-direction: row;
     flex-wrap: wrap;*/
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    border-left: 3px var(--secondary-color) solid;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  border-left: 3px var(--secondary-color) solid;
 }
 
 .hintButton {
-    background-color: var(--secondary-color);
-    width: 20px;
-    height: 20px;
-    margin: 5px;
-    border-radius: 100%;
-    border: 3px var(--third-color) solid;
-    box-shadow: 2px 2px var(--third-color);
+  background-color: var(--secondary-color);
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border-radius: 100%;
+  border: 3px var(--third-color) solid;
+  box-shadow: 2px 2px var(--third-color);
 }
