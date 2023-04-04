@@ -182,6 +182,8 @@ function checkGuess() {
       ) {
         placedGuess = true;
         score++;
+        console.log(combinationToGuess);
+        console.log(userCombination);
         console.log(
           combinationToGuess[l] +
             " " +
@@ -213,17 +215,20 @@ function checkGuess() {
         cloneCombinationToGuess[l] !== "else"
       ) {
         simpleGuess = true;
+        console.log(combinationToGuess);
+        console.log(userCombination);
         console.log(
           combinationToGuess[l] +
             " " +
             l +
             " / " +
-            userCombination[l] +
+            userCombination[k] +
             " " +
-            l +
+            k +
             " simple"
         );
         cloneCombinationToGuess[l] = "else";
+        userCombination[k] = "else";
       }
 
       if (simpleGuess === true) {
