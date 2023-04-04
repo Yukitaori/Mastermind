@@ -92,7 +92,7 @@ function createGuessingLine() {
         );
         guessingButtonToDeactivate.setAttribute("class", "guessingButton");
       }
-      submitButton.textContent = "Tour " + Number(turnNumber) + " terminé !";
+      submitButton.textContent = "Tour " + Number(turnNumber);
       checkGuess();
     }
   }

@@ -1,0 +1,2 @@
+- revoir l'alogorithme de vérification, encore un peu à l'ouest pour les validations de couleur (pas de placement, a priori)
+
