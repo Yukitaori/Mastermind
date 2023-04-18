@@ -1,2 +1,1 @@
-- revoir l'alogorithme de vérification, encore un peu à l'ouest pour les validations de couleur (pas de placement, a priori)
-
+- ajouter une sélection de difficulté (choix entre 4, 5 et 6 pegs)

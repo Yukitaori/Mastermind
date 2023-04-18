@@ -33,7 +33,6 @@ function launchNewGame() {
   turnNumber = 0;
   combinationToGuess = [];
   random4Combination();
-  console.log(combinationToGuess);
   createGuessingLine();
 }
 
@@ -55,7 +54,6 @@ function random4Combination() {
 
 // this function creates a new line in which the user can propose their guess.
 function createGuessingLine() {
-  console.log("Nouvelle Ligne");
   turnNumber++;
 
   while (userCombination.length > 0) {
@@ -66,8 +64,6 @@ function createGuessingLine() {
   newLine.setAttribute("class", "guessingLine");
   newLine.setAttribute("id", "line" + turnNumber);
   gameScreen.appendChild(newLine);
-  console.log(turnNumber);
-  console.log(newLine.getAttribute("id"));
 
   let submitButton = document.createElement("button");
   submitButton.setAttribute("class", "submitButton");
@@ -76,14 +72,17 @@ function createGuessingLine() {
   newLine.appendChild(submitButton);
   submitButton.addEventListener("click", submitGuess);
   function submitGuess() {
-    if (userCombination.length !== combinationToGuess.length) {
+    if (
+      userCombination.includes(null) ||
+      userCombination.length !== combinationToGuess.length ||
+      userCombination.includes(undefined)
+    ) {
       confirm(
         "You must enter a combination of " +
           combinationToGuess.length +
           " pegs."
       );
     } else {
-      console.log("Désactivation + nouveau texte sur bouton submit");
       submitButton.removeEventListener("click", submitGuess);
       let guessingButtonToDeactivate;
       for (let k = 1; k <= 4; k++) {
@@ -137,7 +136,6 @@ function createGuessingLine() {
 
 // This function, used in the function checkGuess() gives a color to a random hintButton of the hintSquare.
 function randomPegPlacing() {
-  console.log("placement du pion");
   function selectPegHole() {
     pegHoleName = turnNumber + "hintButton" + random(1, 4);
     pegHole = document.getElementById(pegHoleName);
@@ -148,27 +146,21 @@ function randomPegPlacing() {
   do {
     selectPegHole();
   } while (pegHole.classList.contains("colored") === true);
-  console.log(pegHoleName);
 
-  // if (pegHole.style.backgroundColor !== 'red' && pegHole.style.backgroundColor !== 'white') {
   if (placedGuess === true) {
     pegHole.style.backgroundColor = "red";
     placedGuess = false;
     pegHole.classList.add("colored");
-    console.log("Placé !");
   } else if (simpleGuess === true) {
     pegHole.style.backgroundColor = "white";
     simpleGuess = false;
     pegHole.classList.add("colored");
-    console.log("Pas placé !");
   }
 }
 
 // This function checks the userCombination and places randomly white pegs for a good color guess and red pegs for a good place guess in the hintSquare.
 // It also ends the game and launches a new game if the userCombination is the exact same as the combinationToGuess.
 function checkGuess() {
-  console.log(combinationToGuess);
-  console.log(userCombination);
   let score = 0;
   let cloneCombinationToGuess = combinationToGuess.slice();
   for (let k = 0; k < userCombination.length; k++) {
@@ -182,30 +174,15 @@ function checkGuess() {
       ) {
         placedGuess = true;
         score++;
-        console.log(combinationToGuess);
-        console.log(userCombination);
-        console.log(
-          combinationToGuess[l] +
-            " " +
-            l +
-            " / " +
-            userCombination[k] +
-            " " +
-            k +
-            " placed"
-        );
         userCombination[k] = "else";
         cloneCombinationToGuess[l] = "else";
       }
-
       if (placedGuess === true) {
         randomPegPlacing();
       }
     }
   }
 
-  // let filteredUserCombination = userCombination.filter(element => element !== "else");
-  // console.log("filter " + filteredUserCombination)
   for (let k = 0; k < userCombination.length; k++) {
     for (let l = 0; l < combinationToGuess.length; l++) {
       simpleGuess = false;
@@ -215,22 +192,9 @@ function checkGuess() {
         cloneCombinationToGuess[l] !== "else"
       ) {
         simpleGuess = true;
-        console.log(combinationToGuess);
-        console.log(userCombination);
-        console.log(
-          combinationToGuess[l] +
-            " " +
-            l +
-            " / " +
-            userCombination[k] +
-            " " +
-            k +
-            " simple"
-        );
         cloneCombinationToGuess[l] = "else";
         userCombination[k] = "else";
       }
-
       if (simpleGuess === true) {
         randomPegPlacing();
       }
@@ -240,7 +204,6 @@ function checkGuess() {
   // This function checks the conditions for the end of the game and creates a new guessing line if necessary.
   // If the score = 4 => the game is won. If not and it's the 10th turn => the game is lost.
   function scoreCheck() {
-    console.log("Check");
     if (score === 4) {
       confirm("You win!!!");
       launchNewGame();
