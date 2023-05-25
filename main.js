@@ -24,6 +24,33 @@ function information() {
   }
 }
 
+function alertModal(alert, confirm) {
+    let modalBg = document.createElement("div");
+    modalBg.setAttribute("class", "modalBg");
+    modalBg.setAttribute("id", "alertModalBg");
+    document.getElementById("main").appendChild(modalBg);
+
+    let modal = document.createElement("div");
+    modal.setAttribute("class", "modal");
+    modal.setAttribute("id", "alertModal");
+    modalBg.appendChild(modal);
+
+    let modalText = document.createElement("p");
+    modalText.setAttribute("class", "modalText");
+    modalText.innerText = alert;
+    modal.appendChild(modalText);
+
+    let modalButton = document.createElement("button");
+    modalButton.setAttribute("class", "modalButton");
+    modalButton.innerText = confirm;
+    modalButton.addEventListener("click", removeModal);
+    modal.appendChild(modalButton);
+
+    function removeModal() {
+      modalBg.remove();
+    }
+}
+
 //this function reboots the game screen, and gives a new random combination to guess.
 function launchNewGame() {
   while (gameScreen.firstChild) {
@@ -77,10 +104,10 @@ function createGuessingLine() {
       userCombination.length !== combinationToGuess.length ||
       userCombination.includes(undefined)
     ) {
-      confirm(
+      alertModal(
         "You must enter a combination of " +
           combinationToGuess.length +
-          " pegs."
+          " pegs.", "Got it!"
       );
     } else {
       submitButton.removeEventListener("click", submitGuess);
@@ -205,11 +232,11 @@ function checkGuess() {
   // If the score = 4 => the game is won. If not and it's the 10th turn => the game is lost.
   function scoreCheck() {
     if (score === 4) {
-      confirm("You win!!!");
+      alertModal("You win!!!", "Thank you!");
       launchNewGame();
     } else {
       if (turnNumber === 10) {
-        confirm("You lose.");
+        alertModal("You lose.", "I'll try again.");
         launchNewGame();
       } else {
         createGuessingLine();
