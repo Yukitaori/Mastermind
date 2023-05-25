@@ -5,6 +5,7 @@
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   --main-color: #ae2012;
   --secondary-color: #e9d8a6;
+  --secondary-color-lesseropacity: rgb(233,216,166, 0.5);
   --third-color: #005f73;
   --fourth-color: #ee9b00;
 }
@@ -147,6 +148,39 @@ h2 {
   border: 3px var(--third-color) solid;
   box-shadow: 2px 2px var(--third-color);
 }
+
+.modalBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--secondary-color-lesseropacity);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  padding: 10% 10%;;
+  width: 60%;
+  background-color: var(--fourth-color);
+  border: 3px solid var(--third-color);
+  border-radius: 25px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3em;
+}
+
+.modalText {
+  color: var(--third-color);
+  font-size: calc(1rem + 1vw);
+  text-align: center;
+  }
 
 @media screen and (max-width: 600px) {
   /*/////////// HEADER ///////////*/
