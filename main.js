@@ -24,6 +24,33 @@ function information() {
   }
 }
 
+function alertModal(alert) {
+    let modalBg = document.createElement("div");
+    modalBg.setAttribute("class", "modalBg");
+    modalBg.setAttribute("id", "alertModalBg");
+    document.body.main.appendChild(showModal);
+
+    let modal = document.createElement("div");
+    modal.setAttribute("class", "modal");
+    modal.setAttribute("id", "alertModal");
+    modalBg.appendChild(modal);
+
+    let modalText = document.createElement("p");
+    modalText.setAttribute("class", "modalText");
+    modalText.innerText = alert;
+    modal.appendChild(modalText);
+
+    let modalButton = document.createElement("button");
+    modalButton.setAttribute("class", "modalButton");
+    modalButton.innerText = "Got it!";
+    modalButton.addEventListener("click", removeModal);
+    modal.appendChild(modalButton);
+
+    function removeModal() {
+      modalBg.remove();
+    }
+}
+
 //this function reboots the game screen, and gives a new random combination to guess.
 function launchNewGame() {
   while (gameScreen.firstChild) {
