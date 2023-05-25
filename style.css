@@ -69,17 +69,7 @@ button:hover {
 
 h2 {
   text-align: center;
-}
-
-#rules {
-  padding: 1.5rem;
-  margin: 1.5rem auto 0px auto;
-  width: 70vw;
-  background-color: var(--third-color);
-  color: var(--fourth-color);
-  border-radius: 10px;
-  border: 3px var(--main-color) solid;
-  font-size: calc(1rem + 1vw);
+  margin-bottom: 1em;
 }
 
 /*/////////// GAME SCREEN ///////////*/
@@ -163,8 +153,8 @@ h2 {
 }
 
 .modal {
-  padding: 10% 10%;;
-  width: 60%;
+  padding: 5% 1%;;
+  width: 90%;
   background-color: var(--fourth-color);
   border: 3px solid var(--third-color);
   border-radius: 25px;
@@ -179,7 +169,7 @@ h2 {
 .modalText {
   color: var(--third-color);
   font-size: calc(1rem + 1vw);
-  text-align: center;
+  text-align: left;
   }
 
 @media screen and (max-width: 600px) {
@@ -258,5 +248,9 @@ h2 {
     width: 20vw;
     height: 4vh;
     font-size: calc(1em + 2vw);
+  }
+
+  .modal {
+    padding: 5% 5%;;
   }
 }
