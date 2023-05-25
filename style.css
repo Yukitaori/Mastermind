@@ -105,9 +105,9 @@ h2 {
   width: calc(3rem + 1.5vw);
   height: calc(3rem + 1.5vw);
   border-radius: 100%;
-  background-color: var(--secondary-color);
   margin: auto;
-  border: 3px var(--third-color) solid;
+  background-color: var(--third-color);
+  border: 3px var(--fourth-color) solid;
   box-shadow: 3px 3px var(--third-color);
 }
 
@@ -130,12 +130,12 @@ h2 {
 .hintButton {
   justify-self: center;
   align-self: center;
-  background-color: var(--secondary-color);
+  background-color: var(--third-color);
+  border: 3px var(--fourth-color) solid;
   width: calc(0.8rem + 1vw);
   height: calc(0.8rem + 1vw);
   margin: 5px;
   border-radius: 100%;
-  border: 3px var(--third-color) solid;
   box-shadow: 2px 2px var(--third-color);
 }
 
