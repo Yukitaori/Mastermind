@@ -5,13 +5,17 @@
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   --main-color: #ae2012;
   --secondary-color: #e9d8a6;
-  --secondary-color-lesseropacity: rgb(233,216,166, 0.5);
+  --secondary-color-lesseropacity: rgb(233, 216, 166, 0.5);
   --third-color: #005f73;
   --fourth-color: #ee9b00;
 }
 
 :root {
   width: 100vw;
+}
+
+#main {
+  position: relative;
 }
 
 /*/////////// HEADER ///////////*/
@@ -43,6 +47,7 @@ body {
 }
 
 button {
+  cursor: pointer;
   border-color: var(--third-color);
   border-radius: 5px;
   transition: color 0.1s;
@@ -56,7 +61,7 @@ button {
   font-size: calc(1rem + 1vw);
 }
 
-button:hover {
+button:hover:not(.inactive) {
   color: var(--third-color);
 }
 
@@ -83,6 +88,13 @@ h2 {
   width: 70vw;
 }
 
+.welcome {
+  padding: 0.5em;
+  color: var(--secondary-color);
+  font-size: calc(1rem + 1vw);
+  text-align: center;
+}
+
 .guessingLine {
   margin: 1em auto;
   background-color: var(--main-color);
@@ -102,8 +114,9 @@ h2 {
 }
 
 .guessingButton {
-  width: calc(3rem + 1.5vw);
-  height: calc(3rem + 1.5vw);
+  cursor: pointer;
+  width: calc(2.5rem + 1.5vw);
+  height: calc(2.5rem + 1.5vw);
   border-radius: 100%;
   margin: auto;
   background-color: var(--third-color);
@@ -111,9 +124,13 @@ h2 {
   box-shadow: 3px 3px var(--third-color);
 }
 
-.guessingButton:hover {
+.guessingButton:hover:not(.inactive) {
   transition: opacity 0.3s;
   opacity: 0.7;
+}
+
+.inactive {
+  cursor: default;
 }
 
 .hintSquare {
@@ -140,7 +157,8 @@ h2 {
 }
 
 .modalBg {
-  position: absolute;
+  position: fixed;
+  overflow: auto;
   top: 0;
   left: 0;
   z-index: 2;
@@ -149,28 +167,33 @@ h2 {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .modal {
-  padding: 2%;;
-  width: 90%;
+  position: fixed;
+  overflow: auto;
+  padding: 2%;
+  width: 70%;
   background-color: var(--fourth-color);
   border: 3px solid var(--third-color);
   border-radius: 25px;
-  height: auto;
+  min-height: fit-content;
+  max-height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   gap: 3em;
+  margin: 10vh;
 }
 
 .modalText {
   color: var(--third-color);
   font-size: calc(1rem + 1vw);
   text-align: left;
-  }
+  max-width: 45ch;
+}
 
 @media screen and (max-width: 600px) {
   /*/////////// HEADER ///////////*/
@@ -200,7 +223,7 @@ h2 {
     width: 30vw;
     height: 5vh;
     min-height: 30px;
-    font-size: calc(1em + 1vw);
+    font-size: calc(0.8em + 1vw);
   }
 
   .buttons {
@@ -227,8 +250,8 @@ h2 {
   }
 
   .guessingButton {
-    width: calc(1rem + 5vw);
-    height: calc(1rem + 5vw);
+    width: calc(0.5rem + 5vw);
+    height: calc(0.5rem + 5vw);
   }
 
   .hintSquare {
@@ -247,10 +270,11 @@ h2 {
   .submitButton {
     width: 20vw;
     height: 4vh;
-    font-size: calc(1em + 2vw);
+    font-size: calc(0.8em + 1vw);
   }
 
   .modal {
     padding: 5%;
+    width: 90%;
   }
 }
