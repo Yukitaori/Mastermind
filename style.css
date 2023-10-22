@@ -88,6 +88,13 @@ h2 {
   width: 70vw;
 }
 
+.welcome {
+  padding: 0.5em;
+  color: var(--secondary-color);
+  font-size: calc(1rem + 1vw);
+  text-align: center;
+}
+
 .guessingLine {
   margin: 1em auto;
   background-color: var(--main-color);
@@ -167,7 +174,7 @@ h2 {
   position: fixed;
   overflow: auto;
   padding: 2%;
-  width: 90%;
+  width: 70%;
   background-color: var(--fourth-color);
   border: 3px solid var(--third-color);
   border-radius: 25px;
@@ -216,7 +223,7 @@ h2 {
     width: 30vw;
     height: 5vh;
     min-height: 30px;
-    font-size: calc(1em + 1vw);
+    font-size: calc(0.8em + 1vw);
   }
 
   .buttons {
@@ -263,10 +270,11 @@ h2 {
   .submitButton {
     width: 20vw;
     height: 4vh;
-    font-size: calc(1em + 2vw);
+    font-size: calc(0.8em + 1vw);
   }
 
   .modal {
     padding: 5%;
+    width: 90%;
   }
 }

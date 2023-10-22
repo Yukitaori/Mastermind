@@ -83,9 +83,7 @@ function alertModal(alert, confirm) {
 
 //this function reboots the game screen, and gives a new random combination to guess.
 function launchNewGame() {
-  while (gameScreen.firstChild) {
-    gameScreen.removeChild(gameScreen.firstChild);
-  }
+  gameScreen.innerHTML = null;
   turnNumber = 0;
   combinationToGuess = [];
   random4Combination();
