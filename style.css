@@ -10,16 +10,12 @@
   --fourth-color: #ee9b00;
 }
 
-:root {
-  width: 100vw;
-}
-
 #main {
   position: relative;
 }
 
-body {
-  height: fit-content;
+html {
+  height: 100%;
 }
 
 /*/////////// HEADER ///////////*/
@@ -47,6 +43,9 @@ h1 {
 
 body {
   background-color: var(--secondary-color);
+  height: fit-content;
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 
@@ -167,8 +166,8 @@ h2 {
   left: 0;
   z-index: 2;
   background-color: var(--secondary-color-lesseropacity);
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -177,7 +176,6 @@ h2 {
 .modal {
   overflow: auto;
   padding: 2%;
-  width: 70%;
   background-color: var(--fourth-color);
   border: 3px solid var(--third-color);
   border-radius: 25px;
@@ -187,7 +185,7 @@ h2 {
   justify-content: flex-start;
   align-items: center;
   gap: 3em;
-  margin: 10vh;
+  margin-block: 10vh;
 }
 
 .modalText {
@@ -211,15 +209,10 @@ h2 {
 
   h1 {
     width: 100%;
-    font-size: calc(14vw);
+    font-size: 14vw;
   }
 
   /*/////////// BODY ///////////*/
-
-  body {
-    width: 100vw;
-    margin: auto;
-  }
 
   button {
     width: 30vw;
