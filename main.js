@@ -110,8 +110,6 @@ function random4Combination() {
 function createGuessingLine() {
   turnNumber++;
 
-  let buttonsToDeactivate;
-
   while (userCombination.length > 0) {
     userCombination.pop();
   }
@@ -191,6 +189,7 @@ function createGuessingLine() {
     }
   }
   createHintSquare();
+  gameScreen.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 // This function, used in the function checkGuess() gives a color to a random hintButton of the hintSquare.
